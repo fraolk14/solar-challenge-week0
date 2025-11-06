@@ -1,2 +1,1 @@
-"# solar-challenge-week0" 
-data
+# Solar Challenge Week 0
