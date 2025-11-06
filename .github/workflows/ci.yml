@@ -1,30 +1,32 @@
 name: CI
 
 on:
-    push:
-    pull_request:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
-    test:
-        runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest
 
-        steps:
-            - name: Checkout repository
-                uses: actions/checkout@v4
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-            - name: Set up Python
-                uses: actions/setup-python@v4
-                with:
-                    python-version: '3.x'
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
 
-            - name: Show Python version
-                run: python --version
+      - name: Show Python version
+        run: python --version
 
-            - name: Install requirements if present
-                run: |
-                    if [ -f requirements.txt ]; then
-                        python -m pip install --upgrade pip
-                        python -m pip install -r requirements.txt
-                    else
-                        echo "requirements.txt not found, skipping pip install"
-                    fi
+      - name: Install dependencies
+        run: |
+          if [ -f requirements.txt ]; then
+            echo "Installing dependencies..."
+            pip install -r requirements.txt
+          else
+            echo "No requirements.txt found, skipping installation."
+          fi
