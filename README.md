@@ -12,7 +12,7 @@ As part of this challenge, we perform:
 - Cross-country comparison and visualization.
 - Interactive dashboard development using Streamlit.
 
----
+----
 
 ## 🗂️ Project Structure
 
