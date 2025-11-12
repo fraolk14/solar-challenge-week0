@@ -7,7 +7,7 @@ st.set_page_config(layout='wide', page_title='Solar Week0 Dashboard')
 st.title("Solar Data Discovery - Week 0")
 
 DATA_DIR = Path(__file__).parents[1] / 'data'
-files = {'Benin':'benin_clean.csv','SierraLeone':'sierraleone_clean.csv','Togo':'togo_clean.csv'}
+files = {'Benin':'benin-malanville.csv','SierraLeone':'sierraleone-bumbuna.csv','Togo':'togo-dapaong_qc.csv'}
 
 country = st.sidebar.selectbox("Country", list(files.keys()))
 fn = files[country]

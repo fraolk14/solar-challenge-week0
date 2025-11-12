@@ -1,8 +1,21 @@
 # app/utils.py
+import os
 import pandas as pd
 from pathlib import Path
 
-DATA_DIR = Path("../data")  # adjust if app lives elsewhere
+# Dynamically locate the data folder, even if the script runs from app/
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_DIR = os.path.join(BASE_DIR, "..", "data")
+
+def load_data(country_name):
+    file_map = {
+        "Benin": "benin_clean.csv",
+        "Sierra Leone": "sierra_clean.csv",
+        "Togo": "togo_clean.csv"
+    }
+    file_path = os.path.join(DATA_DIR, file_map[country_name])
+    df = pd.read_csv(file_path)
+    return df
 
 def load_country_csv(country_key):
     mapping = {
